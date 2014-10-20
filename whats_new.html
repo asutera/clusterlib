@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Python Module Index &mdash; clusterlib dev documentation</title>
+    <title>dev &mdash; clusterlib dev documentation</title>
     
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -32,13 +32,12 @@
     <script type="text/javascript" src="_static/bootstrap-3.1.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="top" title="clusterlib dev documentation" href="index.html" />
-
+    <link rel="next" title="References" href="references.html" />
+    <link rel="prev" title="Embarrasingly distributed parallel loop" href="index.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
-
-
 
   </head>
   <body>
@@ -62,7 +61,7 @@
             <li class="divider-vertical"></li>
             
                 <li><a href="references.html">References</a></li>
-                <li><a href="whats_new.html">What's new?</a></li>
+                <li><a href="#">What's new?</a></li>
             
             
               <li class="dropdown globaltoc-container">
@@ -99,34 +98,23 @@
 
 <div class="container content-container">
   
-
-   <h1>Python Module Index</h1>
-
-   <div class="modindex-jumpbox">
-   <a href="#cap-c"><strong>c</strong></a>
-   </div>
-
-   <table class="indextable modindextable" cellspacing="0" cellpadding="2">
-     <tr class="pcap"><td></td><td>&nbsp;</td><td></td></tr>
-     <tr class="cap" id="cap-c"><td></td><td>
-       <strong>c</strong></td><td></td></tr>
-     <tr>
-       <td><img src="_static/minus.png" class="toggler"
-              id="toggle-1" style="display: none" alt="-" /></td>
-       <td>
-       <tt class="xref">clusterlib</tt></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&nbsp;&nbsp;&nbsp;
-       <a href="references.html#module-clusterlib.scheduler"><tt class="xref">clusterlib.scheduler</tt></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&nbsp;&nbsp;&nbsp;
-       <a href="references.html#module-clusterlib.storage"><tt class="xref">clusterlib.storage</tt></a></td><td>
-       <em></em></td></tr>
-   </table>
+  <div class="section" id="dev">
+<span id="changes-dev"></span><h1>dev<a class="headerlink" href="#dev" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="changelog">
+<h2>Changelog<a class="headerlink" href="#changelog" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>Add a <a class="reference internal" href="generated/clusterlib.storage.sqlite3_loads.html#clusterlib.storage.sqlite3_loads" title="clusterlib.storage.sqlite3_loads"><tt class="xref py py-func docutils literal"><span class="pre">storage.sqlite3_loads()</span></tt></a> and <cite>storage.sqlite3_dump</cite>
+to work cache easily results of functions or scripts in distributed
+environments. By <a class="reference external" href="http://www.ajoly.org">Arnaud Joly</a></li>
+<li>Add a <a class="reference internal" href="generated/clusterlib.scheduler.queued_or_running_jobs.html#clusterlib.scheduler.queued_or_running_jobs" title="clusterlib.scheduler.queued_or_running_jobs"><tt class="xref py py-func docutils literal"><span class="pre">scheduler.queued_or_running_jobs()</span></tt></a> function to get the names
+of all running jobs on SGE or SLURM cluster. By <a class="reference external" href="http://www.ajoly.org">Arnaud Joly</a></li>
+<li>Add a <a class="reference internal" href="generated/clusterlib.scheduler.submit.html#clusterlib.scheduler.submit" title="clusterlib.scheduler.submit"><tt class="xref py py-func docutils literal"><span class="pre">scheduler.submit()</span></tt></a> function to write easily job submission
+query to sun grid engines (SGE) and SLURM. By <a class="reference external" href="http://www.ajoly.org">Arnaud Joly</a></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
 
 
 </div>
