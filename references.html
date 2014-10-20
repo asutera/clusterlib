@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Embarrasingly distributed parallel loop &mdash; clusterlib dev documentation</title>
+    <title>References &mdash; clusterlib dev documentation</title>
     
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -31,8 +31,8 @@
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="_static/bootstrap-3.1.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
-    <link rel="top" title="clusterlib dev documentation" href="#" />
-    <link rel="next" title="References" href="references.html" />
+    <link rel="top" title="clusterlib dev documentation" href="index.html" />
+    <link rel="prev" title="Embarrasingly distributed parallel loop" href="index.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -50,7 +50,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="index.html">
           Clusterlib</a>
         <span class="navbar-text navbar-version pull-left"><b>dev</b></span>
       </div>
@@ -59,7 +59,7 @@
           <ul class="nav navbar-nav">
             <li class="divider-vertical"></li>
             
-                <li><a href="references.html">References</a></li>
+                <li><a href="#">References</a></li>
             
             
               <li class="dropdown globaltoc-container">
@@ -67,7 +67,7 @@
      id="dLabelGlobalToc"
      data-toggle="dropdown"
      data-target="#"
-     href="#">Site <b class="caret"></b></a>
+     href="index.html">Site <b class="caret"></b></a>
   <ul class="dropdown-menu globaltoc"
       role="menu"
       aria-labelledby="dLabelGlobalToc"></ul>
@@ -96,47 +96,46 @@
 
 <div class="container content-container">
   
-  <div class="section" id="embarrasingly-distributed-parallel-loop">
-<h1>Embarrasingly distributed parallel loop<a class="headerlink" href="#embarrasingly-distributed-parallel-loop" title="Permalink to this headline">¶</a></h1>
-<p>Warnings: the package is still in development. Backward compatibility might
-not be preserved.</p>
-<p>Aims:  simple, pure python</p>
-<div class="section" id="getting-the-latest-code">
-<h2>Getting the latest code<a class="headerlink" href="#getting-the-latest-code" title="Permalink to this headline">¶</a></h2>
-<p>To get the latest code using git, simply type:</p>
-<blockquote>
-<div>git clone git://github.com/clusterlib/clusterlib.git</div></blockquote>
-<p>If you don&#8217;t have git installed, you can download a zip or tarball of the
-latest code: <a class="reference external" href="http://github.com/clusterlib/clusterlib/archive/master">http://github.com/clusterlib/clusterlib/archive/master</a></p>
+  <div class="section" id="references">
+<h1>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h1>
+<p>This is the class and function reference of the package.</p>
+<div class="section" id="module-clusterlib.scheduler">
+<span id="clusterlib-scheduler-scheduler"></span><h2><a class="reference internal" href="#module-clusterlib.scheduler" title="clusterlib.scheduler"><tt class="xref py py-mod docutils literal"><span class="pre">clusterlib.scheduler</span></tt></a>: Scheduler<a class="headerlink" href="#module-clusterlib.scheduler" title="Permalink to this headline">¶</a></h2>
+<p>Module to help working with scheduler such as sun grid engine (SGE) or
+Simple Linux Utility for Resource Management (SLURM).</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">scheduler.queued_or_running_jobs</span></tt>()</td>
+<td>Return the names of the queued or running jobs under SGE and SLURM</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">scheduler.submit</span></tt>(job_command[,&nbsp;job_name,&nbsp;...])</td>
+<td>Write the submission query (without script)</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div class="section" id="installing">
-<h2>Installing<a class="headerlink" href="#installing" title="Permalink to this headline">¶</a></h2>
-<p>As any Python packages, to install clusterlib, simply do:</p>
-<blockquote>
-<div>python setup.py install</div></blockquote>
-<p>in the source code directory.</p>
-</div>
-<div class="section" id="tips-when-working-on-supercomputer">
-<h2>Tips when working on supercomputer<a class="headerlink" href="#tips-when-working-on-supercomputer" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><ul class="simple">
-<li>Refuse the temptation to guess: work with absolute path.</li>
-<li>With multiple python interpreter, use absolute path to the desired python
-interpreter.</li>
-<li><tt class="docutils literal"><span class="pre">sys.executable</span></tt> will give you the current python interpreter.</li>
-<li>If objects are hashed, hash them sooner rather than later.</li>
-</ul>
-</div></blockquote>
-</div>
-<div class="section" id="todo-list">
-<h2>TODO list<a class="headerlink" href="#todo-list" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><ul class="simple">
-<li>Find a way to get job id / job name in a generic way</li>
-</ul>
-</div></blockquote>
-<div class="toctree-wrapper compound">
-</div>
+<div class="section" id="module-clusterlib.storage">
+<span id="clusterlib-storage-storage"></span><h2><a class="reference internal" href="#module-clusterlib.storage" title="clusterlib.storage"><tt class="xref py py-mod docutils literal"><span class="pre">clusterlib.storage</span></tt></a>: Storage<a class="headerlink" href="#module-clusterlib.storage" title="Permalink to this headline">¶</a></h2>
+<p>This module allows to load and store values using a simple sqlite database
+in a distributed fashion.</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">storage.sqlite3_loads</span></tt>(fname,&nbsp;key[,&nbsp;timeout])</td>
+<td>Load value with key from sqlite3 stored at fname</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">storage.sqlite3_dumps</span></tt>(fname,&nbsp;key,&nbsp;value[,&nbsp;...])</td>
+<td>Dumps value with key in the sqlite3 database</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 
