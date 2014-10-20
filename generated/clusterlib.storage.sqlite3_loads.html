@@ -106,7 +106,8 @@
 <tt class="descclassname">clusterlib.storage.</tt><tt class="descname">sqlite3_loads</tt><big>(</big><em>fname</em>, <em>key</em>, <em>timeout=7200.0</em><big>)</big><a class="headerlink" href="#clusterlib.storage.sqlite3_loads" title="Permalink to this definition">¶</a></dt>
 <dd><p>Load value with key from sqlite3 stored at fname</p>
 <p>In order to improve improve performance, it&#8217;s advised to
-query the database using a list of keys.</p>
+query the database using a list of keys. Otherwise you might
+run into the <a class="reference external" href="http://beets.radbox.org/blog/sqlite-nightmare.html">SQlite lock timeout</a></p>
 <p>Note if there is no sqlite3 database at fname, then None is return for
 each key.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -118,6 +119,14 @@ each key.</p>
 <div><p>Path to the sqlite database</p>
 </div></blockquote>
 <p><strong>key</strong> : str or list of str</p>
+<blockquote>
+<div><p>Key used when the value was stored.</p>
+</div></blockquote>
+<p><strong>timeout</strong> : float, (default=7200.0)</p>
+<blockquote>
+<div><p>The timeout parameter specifies how long the connection should wait
+for the lock to go away until raising an exception.</p>
+</div></blockquote>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>value</strong> : object or list of object</p>
