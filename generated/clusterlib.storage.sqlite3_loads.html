@@ -105,7 +105,7 @@
 <dt id="clusterlib.storage.sqlite3_loads">
 <tt class="descclassname">clusterlib.storage.</tt><tt class="descname">sqlite3_loads</tt><big>(</big><em>file_name</em>, <em>key</em>, <em>timeout=7200.0</em><big>)</big><a class="headerlink" href="#clusterlib.storage.sqlite3_loads" title="Permalink to this definition">¶</a></dt>
 <dd><p>Load value with key from sqlite3 stored at fname</p>
-<p>In order to improve improve performance, it&#8217;s advised to
+<p>In order to improve performance, it&#8217;s advised to
 query the database using a list of keys. Otherwise you might
 run into the <a href="#id1"><span class="problematic" id="id2">`SQlite lock timeout
 &lt;http://beets.radbox.org/blog/sqlite-nightmare.html&gt;.`_</span></a></p>
@@ -133,7 +133,8 @@ for the lock to go away until raising an exception.</p>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> : dict</p>
 <blockquote class="last">
 <div><p>Return a dict where each key point is associated to the stored object.
-If the key is missing, there is no key for this entry in out</p>
+If a key from key is missing in the sqlite3, then there is no
+entry in out for this key.</p>
 </div></blockquote>
 </td>
 </tr>
