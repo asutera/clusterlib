@@ -103,7 +103,7 @@
 <h1>clusterlib.scheduler.submit<a class="headerlink" href="#clusterlib-scheduler-submit" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="clusterlib.scheduler.submit">
-<tt class="descclassname">clusterlib.scheduler.</tt><tt class="descname">submit</tt><big>(</big><em>job_command</em>, <em>job_name='job'</em>, <em>time='24:00:00'</em>, <em>memory=4000</em>, <em>email=None</em>, <em>email_options=None</em>, <em>log_directory=None</em>, <em>backend='sge'</em>, <em>shell_script='#!/bin/bash\n'</em><big>)</big><a class="headerlink" href="#clusterlib.scheduler.submit" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">clusterlib.scheduler.</tt><tt class="descname">submit</tt><big>(</big><em>job_command</em>, <em>job_name='job'</em>, <em>time='24:00:00'</em>, <em>memory=4000</em>, <em>email=None</em>, <em>email_options=None</em>, <em>log_directory=None</em>, <em>backend='slurm'</em>, <em>shell_script='#!/bin/bash'</em><big>)</big><a class="headerlink" href="#clusterlib.scheduler.submit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Write the submission query (without script)</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -111,38 +111,48 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>job_command</strong> : str,</p>
 <blockquote>
-<div><blockquote>
-<div><p>command associated to the job, e.g. &#8216;python main.py&#8217;.</p>
+<div><p>Command associated to the job, e.g. &#8216;python main.py&#8217;.</p>
 </div></blockquote>
-<dl class="docutils">
-<dt>job_name <span class="classifier-delimiter">:</span> <span class="classifier">str, optional</span></dt>
-<dd><p class="first last">name of the job.</p>
-</dd>
-<dt>time <span class="classifier-delimiter">:</span> <span class="classifier">str, optional</span></dt>
-<dd><p class="first last">maximum time format &#8220;HH:MM:SS&#8221;.</p>
-</dd>
-<dt>memory <span class="classifier-delimiter">:</span> <span class="classifier">str, optional</span></dt>
-<dd><p class="first last">maximum virtual memory in mega-bytes</p>
-</dd>
-<dt>email_address <span class="classifier-delimiter">:</span> <span class="classifier">str, optional</span></dt>
-<dd><p class="first last">email where job information are sent.</p>
-</dd>
-<dt>email_options <span class="classifier-delimiter">:</span> <span class="classifier">str, optional</span></dt>
-<dd><p class="first last">Format char from beas (begin,end,abort,stop).</p>
-</dd>
-<dt>log_directory <span class="classifier-delimiter">:</span> <span class="classifier">str, optional</span></dt>
-<dd><p class="first last">Specify the log directory</p>
-</dd>
-<dt>backend <span class="classifier-delimiter">:</span> <span class="classifier">&#8216;sge&#8217; or &#8216;slurm&#8217;</span></dt>
-<dd><p class="first last">Backend where the job will be submitted</p>
-</dd>
-<dt>shell_script <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
-<dd><p class="first last">Specify shell that is used by the script. Note should be ended by a
-<a href="#id1"><span class="problematic" id="id2">``</span></a>&#8216;</p>
+<p><strong>job_name</strong> : str, optional</p>
+<blockquote>
+<div><p>Name of the job.</p>
+</div></blockquote>
+<p><strong>time</strong> : str, optional</p>
+<blockquote>
+<div><p>Maximum time format &#8220;HH:MM:SS&#8221;.</p>
+</div></blockquote>
+<p><strong>memory</strong> : str, optional</p>
+<blockquote>
+<div><p>Maximum virtual memory in mega-bytes</p>
+</div></blockquote>
+<p><strong>email_address</strong> : str, optional</p>
+<blockquote>
+<div><p>Email where job information is sent.</p>
+</div></blockquote>
+<p><strong>email_options</strong> : str, optional</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>Specify email options:</dt>
+<dd><ul class="first last simple">
+<li>SGE : Format char from beas (begin,end,abort,stop) for SGE.</li>
+<li>SLURM : either BEGIN, END, FAIL, REQUEUE or ALL.</li>
+</ul>
 </dd>
 </dl>
+<p>See the documenation for more information</p>
 </div></blockquote>
-<p><strong>&#8216;`` to work properly.</strong> :</p>
+<p><strong>log_directory</strong> : str, optional</p>
+<blockquote>
+<div><p>Specify the log directory</p>
+</div></blockquote>
+<p><strong>backend</strong> : {&#8216;sge&#8217;, &#8216;slurm&#8217;}</p>
+<blockquote>
+<div><p>Backend where the job will be submitted</p>
+</div></blockquote>
+<p><strong>shell_script</strong> : str</p>
+<blockquote>
+<div><p>Specify shell that is used by the script.</p>
+</div></blockquote>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>submission_query</strong> : str,</p>
@@ -155,6 +165,17 @@ Further options could be appended at the end of the string.</p>
 </tr>
 </tbody>
 </table>
+<p class="rubric">Examples</p>
+<p>First, let&#8217;s generate a command for SLURM to launch the program
+<tt class="docutils literal"><span class="pre">main.py</span></tt>.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">clusterlib.scheduler</span> <span class="kn">import</span> <span class="n">submit</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">script</span> <span class="o">=</span> <span class="n">submit</span><span class="p">(</span><span class="s">&quot;python main.py --args 1&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">script</span><span class="p">)</span>
+<span class="go">echo &#39;#!/bin/bash</span>
+<span class="go">python main.py --args 1&#39; | sbatch --job-name=job --time=24:00:00 --mem=4000</span>
+</pre></div>
+</div>
+<p>The job can be latter launched using for instance <tt class="docutils literal"><span class="pre">`os.system(script)</span></tt>.</p>
 </dd></dl>
 
 </div>

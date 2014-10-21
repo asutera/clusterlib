@@ -105,6 +105,14 @@
 <span id="clusterlib-scheduler-scheduler"></span><h2><a class="reference internal" href="#module-clusterlib.scheduler" title="clusterlib.scheduler"><tt class="xref py py-mod docutils literal"><span class="pre">clusterlib.scheduler</span></tt></a>: Scheduler<a class="headerlink" href="#module-clusterlib.scheduler" title="Permalink to this headline">¶</a></h2>
 <p>Module to help working with scheduler such as sun grid engine (SGE) or
 Simple Linux Utility for Resource Management (SLURM).</p>
+<dl class="docutils">
+<dt>Main functions covered are :</dt>
+<dd><ul class="first last simple">
+<li>get the list of names of all running jobs;</li>
+<li>generate easily a submission query for a job.</li>
+</ul>
+</dd>
+</dl>
 <table border="1" class="longtable docutils">
 <colgroup>
 <col width="10%" />
@@ -130,10 +138,10 @@ in a distributed fashion.</p>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="generated/clusterlib.storage.sqlite3_loads.html#clusterlib.storage.sqlite3_loads" title="clusterlib.storage.sqlite3_loads"><tt class="xref py py-obj docutils literal"><span class="pre">storage.sqlite3_loads</span></tt></a>(fname,&nbsp;key[,&nbsp;timeout])</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/clusterlib.storage.sqlite3_loads.html#clusterlib.storage.sqlite3_loads" title="clusterlib.storage.sqlite3_loads"><tt class="xref py py-obj docutils literal"><span class="pre">storage.sqlite3_loads</span></tt></a>(file_name,&nbsp;key[,&nbsp;timeout])</td>
 <td>Load value with key from sqlite3 stored at fname</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/clusterlib.storage.sqlite3_dumps.html#clusterlib.storage.sqlite3_dumps" title="clusterlib.storage.sqlite3_dumps"><tt class="xref py py-obj docutils literal"><span class="pre">storage.sqlite3_dumps</span></tt></a>(fname,&nbsp;key,&nbsp;value[,&nbsp;...])</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/clusterlib.storage.sqlite3_dumps.html#clusterlib.storage.sqlite3_dumps" title="clusterlib.storage.sqlite3_dumps"><tt class="xref py py-obj docutils literal"><span class="pre">storage.sqlite3_dumps</span></tt></a>(dictionnary,&nbsp;file_name)</td>
 <td>Dumps value with key in the sqlite3 database</td>
 </tr>
 </tbody>

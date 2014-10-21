@@ -103,24 +103,25 @@
 <h1>clusterlib.storage.sqlite3_loads<a class="headerlink" href="#clusterlib-storage-sqlite3-loads" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="clusterlib.storage.sqlite3_loads">
-<tt class="descclassname">clusterlib.storage.</tt><tt class="descname">sqlite3_loads</tt><big>(</big><em>fname</em>, <em>key</em>, <em>timeout=7200.0</em><big>)</big><a class="headerlink" href="#clusterlib.storage.sqlite3_loads" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">clusterlib.storage.</tt><tt class="descname">sqlite3_loads</tt><big>(</big><em>file_name</em>, <em>key</em>, <em>timeout=7200.0</em><big>)</big><a class="headerlink" href="#clusterlib.storage.sqlite3_loads" title="Permalink to this definition">¶</a></dt>
 <dd><p>Load value with key from sqlite3 stored at fname</p>
 <p>In order to improve improve performance, it&#8217;s advised to
 query the database using a list of keys. Otherwise you might
-run into the <a class="reference external" href="http://beets.radbox.org/blog/sqlite-nightmare.html">SQlite lock timeout</a></p>
-<p>Note if there is no sqlite3 database at fname, then None is return for
-each key.</p>
+run into the <a href="#id1"><span class="problematic" id="id2">`SQlite lock timeout
+&lt;http://beets.radbox.org/blog/sqlite-nightmare.html&gt;.`_</span></a></p>
+<p>Note if there is no sqlite3 database at fname, then an empty dictionnary
+is returned.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>fname</strong> : str</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>key</strong> : str or list of str</p>
 <blockquote>
-<div><p>Path to the sqlite database</p>
+<div><p>Key used when the value was stored or list of keys.</p>
 </div></blockquote>
-<p><strong>key</strong> : str or list of str</p>
+<p><strong>file_name</strong> : str</p>
 <blockquote>
-<div><p>Key used when the value was stored.</p>
+<div><p>Path to the sqlite database.</p>
 </div></blockquote>
 <p><strong>timeout</strong> : float, (default=7200.0)</p>
 <blockquote>
@@ -129,15 +130,29 @@ for the lock to go away until raising an exception.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>value</strong> : object or list of object</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> : dict</p>
 <blockquote class="last">
-<div><p>Return the object or list of objects associated to each key.
-None is return if the key is missing.</p>
+<div><p>Return a dict where each key point is associated to the stored object.
+If the key is missing, there is no key for this entry in out</p>
 </div></blockquote>
 </td>
 </tr>
 </tbody>
 </table>
+<p class="rubric">Examples</p>
+<p>Here, we generate a temporary sqlite3 database, dump then load some
+data from it.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">tempfile</span> <span class="kn">import</span> <span class="n">NamedTemporaryFile</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">clusterlib.storage</span> <span class="kn">import</span> <span class="n">sqlite3_dumps</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">clusterlib.storage</span> <span class="kn">import</span> <span class="n">sqlite3_loads</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">NamedTemporaryFile</span><span class="p">()</span> <span class="k">as</span> <span class="n">fhandle</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">sqlite3_dumps</span><span class="p">({</span><span class="s">&quot;3&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s">&quot;2&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">},</span> <span class="n">fhandle</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">out</span> <span class="o">=</span> <span class="n">sqlite3_loads</span><span class="p">(</span><span class="n">fhandle</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;7&quot;</span><span class="p">,</span> <span class="s">&quot;3&quot;</span><span class="p">])</span>
+<span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">{&#39;3&#39;: 3}</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </div>
