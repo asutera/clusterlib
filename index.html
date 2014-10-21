@@ -102,6 +102,8 @@
 <p>Warnings: the package is still in development. Backward compatibility might
 not be preserved.</p>
 <p>Aims:  simple, pure python</p>
+<p>This library works well with <a class="reference external" href="https://pythonhosted.org/joblib/">joblib</a>,
+which is intended to solve similar issue in shared memory architecture.</p>
 <div class="section" id="getting-the-latest-code">
 <h2>Getting the latest code<a class="headerlink" href="#getting-the-latest-code" title="Permalink to this headline">¶</a></h2>
 <p>To get the latest code using git, simply type:</p>
@@ -117,6 +119,15 @@ latest code: <a class="reference external" href="http://github.com/clusterlib/cl
 <div>python setup.py install</div></blockquote>
 <p>in the source code directory.</p>
 </div>
+</div>
+<div class="section" id="running-the-test-suite">
+<h1>Running the test suite<a class="headerlink" href="#running-the-test-suite" title="Permalink to this headline">¶</a></h1>
+<p>To run the test suite, you need nosetests and the coverage modules.
+Run the test suite using:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">nosetests</span>
+</pre></div>
+</div>
+<p>from the root of the project.</p>
 <div class="section" id="documentation">
 <h2>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h2>
 <p>For making the documentation, Sphinx==1.2.2 and sphinx-bootstrap-theme==0.4.0
