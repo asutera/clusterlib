@@ -150,7 +150,9 @@ data from it.</p>
 <span class="gp">... </span>    <span class="n">sqlite3_dumps</span><span class="p">({</span><span class="s">&quot;3&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s">&quot;2&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">},</span> <span class="n">fhandle</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="n">out</span> <span class="o">=</span> <span class="n">sqlite3_loads</span><span class="p">(</span><span class="n">fhandle</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;7&quot;</span><span class="p">,</span> <span class="s">&quot;3&quot;</span><span class="p">])</span>
 <span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="n">out</span><span class="p">[</span><span class="s">&#39;3&#39;</span><span class="p">])</span>
+<span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="s">&quot;7&quot;</span> <span class="ow">in</span> <span class="n">out</span><span class="p">)</span>  <span class="c"># &quot;7&quot; is not in the database</span>
 <span class="go">3</span>
+<span class="go">False</span>
 </pre></div>
 </div>
 <p>It&#8217;s also possible to get all key-value pairs from the database without
