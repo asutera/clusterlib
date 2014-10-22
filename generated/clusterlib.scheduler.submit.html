@@ -113,23 +113,24 @@
 <blockquote>
 <div><p>Command associated to the job, e.g. &#8216;python main.py&#8217;.</p>
 </div></blockquote>
-<p><strong>job_name</strong> : str, optional</p>
+<p><strong>job_name</strong> : str, optional (default=&#8221;job&#8221;)</p>
 <blockquote>
 <div><p>Name of the job.</p>
 </div></blockquote>
-<p><strong>time</strong> : str, optional</p>
+<p><strong>time</strong> : str, optional (default=&#8221;24:00:00&#8221;)</p>
 <blockquote>
 <div><p>Maximum time format &#8220;HH:MM:SS&#8221;.</p>
 </div></blockquote>
-<p><strong>memory</strong> : str, optional</p>
+<p><strong>memory</strong> : str, optional (default=4000)</p>
 <blockquote>
 <div><p>Maximum virtual memory in mega-bytes</p>
 </div></blockquote>
-<p><strong>email_address</strong> : str, optional</p>
+<p><strong>email_address</strong> : str, optional (default=None)</p>
 <blockquote>
-<div><p>Email where job information is sent.</p>
+<div><p>Email where job information is sent. If None, no email is asked
+to be sent.</p>
 </div></blockquote>
-<p><strong>email_options</strong> : str, optional</p>
+<p><strong>email_options</strong> : str, optional (default=None)</p>
 <blockquote>
 <div><dl class="docutils">
 <dt>Specify email options:</dt>
@@ -141,15 +142,15 @@
 </dl>
 <p>See the documenation for more information</p>
 </div></blockquote>
-<p><strong>log_directory</strong> : str, optional</p>
+<p><strong>log_directory</strong> : str, optional (default=None)</p>
 <blockquote>
-<div><p>Specify the log directory</p>
+<div><p>Specify the log directory. If None, no log directory is specified.</p>
 </div></blockquote>
-<p><strong>backend</strong> : {&#8216;sge&#8217;, &#8216;slurm&#8217;}</p>
+<p><strong>backend</strong> : {&#8216;sge&#8217;, &#8216;slurm&#8217;}, optional (default=&#8221;slurm&#8221;)</p>
 <blockquote>
 <div><p>Backend where the job will be submitted</p>
 </div></blockquote>
-<p><strong>shell_script</strong> : str</p>
+<p><strong>shell_script</strong> : str, optional (default=&#8221;#!/bin/bash&#8221;)</p>
 <blockquote>
 <div><p>Specify shell that is used by the script.</p>
 </div></blockquote>
