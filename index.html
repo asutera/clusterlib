@@ -119,6 +119,16 @@ latest code: <a class="reference external" href="https://github.com/clusterlib/c
 <div>python setup.py install</div></blockquote>
 <p>in the source code directory.</p>
 </div>
+<div class="section" id="tips-when-working-on-supercomputer">
+<h2>Tips when working on supercomputer<a class="headerlink" href="#tips-when-working-on-supercomputer" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Refuse the temptation to guess: work with absolute path.</li>
+<li>With multiple python interpreter, use absolute path to the desired python
+interpreter.</li>
+<li><tt class="docutils literal"><span class="pre">sys.executable</span></tt> will give you the current python interpreter.</li>
+<li>If objects are hashed, hash them sooner rather than later.</li>
+</ul>
+</div>
 <div class="section" id="how-to-contribute">
 <h2>How to contribute?<a class="headerlink" href="#how-to-contribute" title="Permalink to this headline">¶</a></h2>
 <p>To contribute to clusterlib, first create a github account. Then you can
@@ -142,26 +152,9 @@ Run the test suite using:</p>
 are needed. Then, you can do</p>
 <blockquote>
 <div>make doc</div></blockquote>
-</div>
-<div class="section" id="tips-when-working-on-supercomputer">
-<h2>Tips when working on supercomputer<a class="headerlink" href="#tips-when-working-on-supercomputer" title="Permalink to this headline">¶</a></h2>
+<p>To update the documentation, simply do</p>
 <blockquote>
-<div><ul class="simple">
-<li>Refuse the temptation to guess: work with absolute path.</li>
-<li>With multiple python interpreter, use absolute path to the desired python
-interpreter.</li>
-<li><tt class="docutils literal"><span class="pre">sys.executable</span></tt> will give you the current python interpreter.</li>
-<li>If objects are hashed, hash them sooner rather than later.</li>
-</ul>
-</div></blockquote>
-</div>
-<div class="section" id="todo-list">
-<h2>TODO list<a class="headerlink" href="#todo-list" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><ul class="simple">
-<li>Make a travis bot with slurm / sge</li>
-</ul>
-</div></blockquote>
+<div>make gh-pages</div></blockquote>
 <div class="toctree-wrapper compound">
 </div>
 </div>
