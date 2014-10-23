@@ -108,8 +108,6 @@
 <p>In order to improve performance, it&#8217;s advised to
 query the database using a (small) list of keys. Otherwise by calling
 this functions repeatedly, you might run into the <a class="reference external" href="http://beets.radbox.org/blog/sqlite-nightmare.html">SQlite lock timeout</a>.</p>
-<p>Note if there is no sqlite3 database at <tt class="docutils literal"><span class="pre">file_name</span></tt>,
-then an empty dictionary is returned.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -134,7 +132,8 @@ for the lock to go away until raising an exception.</p>
 <blockquote class="last">
 <div><p>Return a dict where each key point is associated to the stored object.
 If a key from key is missing in the sqlite3, then there is no
-entry in out for this key.</p>
+entry in out for this key. If there is no sqlite3 database at
+<tt class="docutils literal"><span class="pre">file_name</span></tt>, then an empty dictionary is returned.</p>
 </div></blockquote>
 </td>
 </tr>
