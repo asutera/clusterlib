@@ -107,7 +107,7 @@ three programs:</p>
 <li>A <em>main program</em> who performs some useful computations and accept some
 parameters.</li>
 <li>A <em>submission script</em>, e.g. a bash script, where you define the resource
-needed by the jobs such the maximal duration and the maximal required
+needed by the jobs such as the maximal duration and the maximal required
 memory.</li>
 <li>A <em>launching script</em> which will coordinate your submission scripts and
 and <em>main program</em> to perform all the required computations.</li>
@@ -137,7 +137,7 @@ maintained, (ii) parameters and resources are fixed in the script, e.g. memory
 asked can not be adapted automatically given some parameter of the main program
 and (iii) those scripts are scheduler specific.</p>
 <p>With the <a class="reference internal" href="generated/clusterlib.scheduler.submit.html#clusterlib.scheduler.submit" title="clusterlib.scheduler.submit"><tt class="xref py py-func docutils literal"><span class="pre">clusterlib.scheduler.submit()</span></tt></a> function, you can simply do
-without any the previous drawback:</p>
+everything in Python without any of the previous drawback:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">clusterlib.scheduler</span> <span class="kn">import</span> <span class="n">submit</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">script</span> <span class="o">=</span> <span class="n">submit</span><span class="p">(</span><span class="s">&quot;srun hostname&quot;</span><span class="p">,</span> <span class="n">job_name</span><span class="o">=</span><span class="s">&quot;job-name&quot;</span><span class="p">,</span>
 <span class="gp">... </span>                <span class="n">time</span><span class="o">=</span><span class="s">&quot;10:00&quot;</span><span class="p">,</span> <span class="n">memory</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s">&quot;slurm&quot;</span><span class="p">)</span>
@@ -146,17 +146,18 @@ without any the previous drawback:</p>
 <span class="go">srun hostname&#39; | sbatch --job-name=job-name --time=10:00 --mem=1000</span>
 </pre></div>
 </div>
-<p>Launching the job with the generated submission <tt class="docutils literal"><span class="pre">script</span></tt> can be done using
-<tt class="docutils literal"><span class="pre">os.system(script)</span></tt> or with the Python <tt class="docutils literal"><span class="pre">subprocess</span></tt> submodule.</p>
-<p>More options to the submission script could be done by appending those. Here
-for instance, we add the quiet sbatch option:</p>
+<p>Launching the job with the generated submission <tt class="docutils literal"><span class="pre">script</span></tt> can be done
+directly using <tt class="docutils literal"><span class="pre">os.system(script)</span></tt> or with the Python <tt class="docutils literal"><span class="pre">subprocess</span></tt>
+submodule.</p>
+<p>More options to the submission script could be appended to the generated
+string. Here for instance, we add the quiet sbatch option:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">script</span> <span class="o">+=</span> <span class="s">&#39; --quiet&#39;</span>  <span class="c"># Note the space in front of --</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">script</span><span class="p">)</span>
 <span class="go">echo &#39;#!/bin/bash</span>
 <span class="go">srun hostname&#39; | sbatch --job-name=job-name --time=10:00 --mem=1000 --quiet</span>
 </pre></div>
 </div>
-<p>For multi-line tasks, one can add the proper line break character
+<p>Multi-line tasks are obtained by making the line break character
 in the job command:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">script</span> <span class="o">=</span> <span class="n">submit</span><span class="p">(</span><span class="s">&quot;srun hostname</span><span class="se">\n</span><span class="s">sleep 60&quot;</span><span class="p">,</span> <span class="n">job_name</span><span class="o">=</span><span class="s">&quot;job-name&quot;</span><span class="p">,</span>
 <span class="gp">... </span>                <span class="n">time</span><span class="o">=</span><span class="s">&quot;10:00&quot;</span><span class="p">,</span> <span class="n">memory</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s">&quot;slurm&quot;</span><span class="p">)</span>
@@ -170,15 +171,14 @@ in the job command:</p>
 <div class="section" id="how-to-avoid-re-launching-queued-or-running-jobs">
 <h2>How to avoid re-launching queued or running jobs?<a class="headerlink" href="#how-to-avoid-re-launching-queued-or-running-jobs" title="Permalink to this headline">¶</a></h2>
 <p>In the previous section, we have seen how to write and generate submission
-queries. This allows to schedule thousands of jobs with simple logic. In order
-to spare computing resources, we are going to add some mechanism to avoid
+queries. This allows to schedule thousands of jobs with a simple logic. In order
+to spare computing resources, we are going to add some mechanisms to avoid
 launching jobs that are already queued or running.</p>
-<p>The function <a class="reference internal" href="generated/clusterlib.scheduler.queued_or_running_jobs.html#clusterlib.scheduler.queued_or_running_jobs" title="clusterlib.scheduler.queued_or_running_jobs"><tt class="xref py py-func docutils literal"><span class="pre">clusterlib.scheduler.queued_or_running_jobs()</span></tt></a> allows
-to get the list of all running or queued jobs. This will allow us to derive
-a first launching manager.</p>
-<p>As a small use example, here we want to launch the program <tt class="docutils literal"><span class="pre">main</span></tt> for a
-variety of parameters, but avoid re-relaunching jobs that are already
-queued or running.</p>
+<p>The function <a class="reference internal" href="generated/clusterlib.scheduler.queued_or_running_jobs.html#clusterlib.scheduler.queued_or_running_jobs" title="clusterlib.scheduler.queued_or_running_jobs"><tt class="xref py py-func docutils literal"><span class="pre">clusterlib.scheduler.queued_or_running_jobs()</span></tt></a> allows to get
+the list of all running or queued jobs. This will allow us to derive a first
+launching manager. As a small usage example, here we want to launch the program
+<tt class="docutils literal"><span class="pre">main</span></tt> for a variety of parameters, but avoid re-relaunching jobs that are
+already queued or running.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">from</span> <span class="nn">clusterlib.scheduler</span> <span class="kn">import</span> <span class="n">queued_or_running_jobs</span>
 <span class="kn">from</span> <span class="nn">clusterlib.scheduler</span> <span class="kn">import</span> <span class="n">submit</span>
@@ -196,20 +196,20 @@ queued or running.</p>
 </div>
 <p>Here we have constructed unique job names with a string formatting. As an
 alternative, one can generate hash of the job parameters to have automatically
-unique identifier using either the Python built-in <tt class="docutils literal"><span class="pre">hash</span></tt> or
+unique identifiers using either the Python built-in <tt class="docutils literal"><span class="pre">hash</span></tt> or
 <a class="reference external" href="https://pythonhosted.org/joblib/generated/joblib.hash.html">joblib.hash</a>.</p>
 </div>
 <div class="section" id="how-to-avoid-re-launching-already-done-jobs">
 <h2>How to avoid re-launching already done jobs?<a class="headerlink" href="#how-to-avoid-re-launching-already-done-jobs" title="Permalink to this headline">¶</a></h2>
 <p>While checking if a job is queued or running is done through scheduler,
 checking if a job is already done must be done through the file system.
-Indeed, some information or results of the job must be cached and re-used
-later. Clusterlib offers a simple NO-SQL database based on sqlite3
-to achieve this. With the transactions of the database, jobs could make
+Clusterlib offers a simple NO-SQL database based on sqlite3
+to achieve this. With the transactions of the database, jobs could perform
 simple communications.</p>
-<p>Let&#8217;s take an example, we want to launch the script <tt class="docutils literal"><span class="pre">main.py</span></tt> with a
+<p>Let&#8217;s take a concrete example, we want to launch the script <tt class="docutils literal"><span class="pre">main.py</span></tt> with a
 large number of different parameter combinations. Due to the heavy
-burden, we want to parallelize the script evaluation on the super-computer.</p>
+computational burden, we want to parallelize the script evaluation on a
+super-computer.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># main.py</span>
 
 <span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">time</span>
@@ -228,9 +228,9 @@ burden, we want to parallelize the script evaluation on the super-computer.</p>
     <span class="n">main</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>In order to do this, we first modify or add to the original script some
-call to the NO-SQL which indicates which parameter combinations have been
-evaluated.</p>
+<p>In order to do this, we first modify or add to the original script some call to
+the NO-SQL database which will indicate the parameter combinations that have
+been evaluated.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># clusterlib_main.py</span>
 
 <span class="kn">import</span> <span class="nn">sys</span>
@@ -274,14 +274,16 @@ or that aren&#8217;t running / queued.</p>
             <span class="c"># os.system(script)</span>
 </pre></div>
 </div>
-<p>This simple launcher already allows to manage the thousands of jobs.</p>
+<p>This simple launcher allows simply to manage the thousands jobs avoiding
+to repeat jobs that are processed or in processed.</p>
 </div>
 <div class="section" id="more-tips-when-working-on-a-supercomputer">
 <h2>More tips when working on a supercomputer<a class="headerlink" href="#more-tips-when-working-on-a-supercomputer" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>Refuse the temptation to guess: work with absolute path.</li>
 <li>With multiple python interpreters, use absolute path to the desired python
-interpreter. <tt class="docutils literal"><span class="pre">sys.executable</span></tt> will give you the current python interpreter.</li>
+interpreter. <tt class="docutils literal"><span class="pre">sys.executable</span></tt> will give you the path of the python
+interpreter.</li>
 <li>If objects are hashed, hash them sooner rather than later.</li>
 <li>Check the logic your programs with a fast and dummy setting.</li>
 </ul>
