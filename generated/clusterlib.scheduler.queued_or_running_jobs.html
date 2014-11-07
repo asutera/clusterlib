@@ -61,6 +61,7 @@
           <ul class="nav navbar-nav">
             <li class="divider-vertical"></li>
             
+                <li><a href="../user_guide.html">User guide</a></li>
                 <li><a href="../references.html">References</a></li>
                 <li><a href="../whats_new.html">What's new?</a></li>
             
@@ -105,6 +106,22 @@
 <dt id="clusterlib.scheduler.queued_or_running_jobs">
 <tt class="descclassname">clusterlib.scheduler.</tt><tt class="descname">queued_or_running_jobs</tt><big>(</big><big>)</big><a class="headerlink" href="#clusterlib.scheduler.queued_or_running_jobs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the names of the queued or running jobs under SGE and SLURM</p>
+<p>The list of jobs could be either the list of all jobs on the scheduler
+or only the jobs associated to the user calling this function.
+(Current behavior is unspecified at the moment.)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> : list of string,</p>
+<blockquote class="last">
+<div><p>Returned a list containing all the names of the jobs that are running
+or queued under the SGE or SLURM scheduler.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </div>
