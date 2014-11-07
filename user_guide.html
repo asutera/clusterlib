@@ -157,8 +157,7 @@ string. Here for instance, we add the quiet sbatch option:</p>
 <span class="go">srun hostname&#39; | sbatch --job-name=job-name --time=10:00 --mem=1000 --quiet</span>
 </pre></div>
 </div>
-<p>Multi-line tasks are obtained by making the line break character
-in the job command:</p>
+<p>Multi-line tasks are obtained by making a line break in the job command:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">script</span> <span class="o">=</span> <span class="n">submit</span><span class="p">(</span><span class="s">&quot;srun hostname</span><span class="se">\n</span><span class="s">sleep 60&quot;</span><span class="p">,</span> <span class="n">job_name</span><span class="o">=</span><span class="s">&quot;job-name&quot;</span><span class="p">,</span>
 <span class="gp">... </span>                <span class="n">time</span><span class="o">=</span><span class="s">&quot;10:00&quot;</span><span class="p">,</span> <span class="n">memory</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s">&quot;slurm&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">script</span><span class="p">)</span>
